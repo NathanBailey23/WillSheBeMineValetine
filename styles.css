@@ -1,0 +1,196 @@
+/* 1. Imports */
+@import url('https://fonts.googleapis.com');
+
+/* 2. Grid & Layout - Forces uniform box sizes */
+.row {
+    margin-bottom: 1.5rem; /* Adds spacing between rows */
+}
+
+/* Forces images to fill their columns perfectly without stretching */
+#crispyBreadPNG, #nalaPNG, #bookPNG, #sisyphusPNG, #todoListPNG, #doughGirlPNG, #bilboBagginsjpg {
+    width: 100%;
+    height: 100% !important;
+    object-fit: cover; 
+    border: black solid 1px;
+    background-color: #F2EEE9;
+    border-radius: 20px;
+    display: block;
+}
+
+#eyesPNG {
+    width: 100%;
+    height: 100% !important;
+    object-fit: contain; /* Prevents cropping */
+    border: black solid 1px;
+    background-color: #F2EEE9;
+    border-radius: 20px;
+    display: block;
+    /* Optional: use object-position if you want to align it differently within the box */
+    object-position: center; 
+}
+
+/* Special case for TodoList if you want it to have padding without breaking height */
+#todoListPNG {
+    object-fit: contain; /* Keeps the whole list visible */
+    padding: 10px;
+}
+
+/* 3. The Question Box (Middle Column) */
+#questionDIV {
+    background-color: #4B1E3E;
+    border-radius: 20px;
+    border: #C7A8CB solid 1px;
+    height: 100%; /* Matches height of images in the same row */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow: visible; /* Allows speech bubble to pop out */
+    padding-bottom: 5%;
+    padding-top: 3%;
+    margin-top: 30px;
+}
+
+.custom-box {
+    width: 100%;
+    height: 100%;
+}
+
+/* 4. Toothie Cat & Speech Bubble */
+#toothieDIV {
+    position: relative;
+    z-index: 1000;
+    cursor: pointer;
+    margin-bottom: 40px;
+}
+
+.speech-bubble {
+    display: none;
+    position: absolute;
+    bottom: 115%; 
+    right: 0; 
+    background-color: white;
+    color: #242E47; 
+    border: 2px solid #242E47;
+    border-radius: 12px;
+    padding: 10px;
+    width: 180px; 
+    text-align: center;
+    font-weight: bold;
+    font-size: 0.8rem;
+    z-index: 9999; 
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+
+/* Speech Bubble Tail */
+.speech-bubble::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    right: 15px;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-top: 8px solid white;
+}
+
+#toothieDIV:hover .speech-bubble {
+    display: block;
+}
+
+/* 5. Buttons */
+.btn-custom {
+    background-color: #F7B0CC;
+    color: black;
+    padding: 0.9rem 0.75rem;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.btn-custom2 {
+    background-color: #7A2E39;
+    color: #ffffff;
+    padding: 0.9rem 0.75rem;
+    font-size: 1rem;
+}
+
+/* 6. Handwriting Overlay (The Book) */
+.handwriting-overlay {
+    position: absolute;
+    top: 18%;
+    right: 16% !important; 
+    width: 30%;
+    font-family: "Times New Roman", Times, serif;
+    font-size: 1.5rem;
+    color: black;
+    line-height: 1.6;
+    opacity: 0.9;
+    transform: translate(-25px, -30px) rotate(1deg); 
+    user-select: none;
+    pointer-events: none; /* Allows clicking through the text to the image */
+}
+
+/* 7. Navbar Adjustments */
+.navbar h1 {
+    font-size: 1.75rem;
+    letter-spacing: 1px;
+    font-family: "Pistilli Roman", serif; 
+}
+
+/* Custom Hover States */
+
+/* "Yes" Button Hover: Slightly darker pink */
+.btn-custom:hover {
+    background-color: #f48fb1 !important; 
+    color: black !important;
+}
+
+/* "No" Button Hover: Slightly lighter/more vibrant red */
+.btn-custom2:hover {
+    background-color: #923744 !important; 
+    color: #ffffff !important;
+}
+
+/* Optional: Fix for when buttons are clicked/focused */
+.btn-custom:focus, .btn-custom:active,
+.btn-custom2:focus, .btn-custom2:active {
+    box-shadow: none !important;
+    outline: none !important;
+}
+
+.overlay-text {
+    /* Base styling for readability */
+    font-size: 1.1rem;
+    font-weight: bold;
+    text-shadow: 
+      -1px -1px 0 #000,  
+       1px -1px 0 #000,
+      -1px  1px 0 #000,
+       1px  1px 0 #000; /* Subtle black outline for contrast */
+    padding: 5px;
+    
+    /* Ensure it stays on top of the image */
+    z-index: 2; 
+    
+    /* Make the text slightly wider so it doesn't break into too many lines */
+    width: 90%; 
+}
+
+.secret-link {
+    cursor: default !important; /* Forces the standard arrow cursor */
+    text-decoration: none;      /* Removes any accidental underlines */
+    display: block;             /* Ensures it takes up the full space of the image */
+    height: 100%;
+}
+
+.secret-link img {
+    cursor: default !important; /* Double-check to ensure the image doesn't trigger the hand */
+}
+
+/* Optional: Prevent the "blue" outline if someone accidentally tabs to it */
+.secret-link:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+body {
+    background-color: #F6C1D1;
+}
